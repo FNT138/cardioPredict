@@ -1,0 +1,27 @@
+Portada: Título CardioPredict, tu nombre, fecha, materia.
+
+Introducción y motivación: por qué es importante detectar riesgo cardíaco.
+
+Objetivos (general + específicos).
+
+Dataset: fuentes, tamaño, atributos clave (tabla pequeña).
+
+Preprocesamiento: pasos de limpieza e imputación (bullet points).
+
+Features usadas y engineering (lista y justificación).
+
+Modelos probados (LogReg, RF, XGBoost) y cómo se entrenaron.
+
+Evaluación: tabla de métricas (accuracy, precision, recall, F1, AUC) por modelo.
+
+Curva ROC y matriz de confusión (gráficos).
+
+Interpretabilidad: feature importance y SHAP summary (imagen).
+
+Conclusiones y recomendaciones (qué variables más influyen, uso clínico).
+
+Limitaciones y trabajos futuros.
+
+Referencias y anexos (links a datasets y prompts usados).
+
+Te preparo un PPT .pptx plantilla si querés (puedo generarlo aquí), pero te dejo esta estructura lista para copiar.
