@@ -1,2 +1,3 @@
 # cardioPredict
-Algoritmo de machine learning para la prediccion de enfermedades cardiacas
+Este proyecto se enmarca dentro de la materia Inteligencia Artificial y más específicamente en el área de aprendizaje automático supervisado (supervised learning). En este paradigma, el objetivo es que un modelo aprenda a partir de un conjunto de datos etiquetado, en el cual cada observación está asociada a un resultado conocido (etiqueta). En nuestro caso, cada registro corresponde a un paciente, descrito mediante variables clínicas, y la etiqueta indica la presencia o ausencia de enfermedad cardíaca.
+El problema a resolver es de clasificación binaria, ya que la variable objetivo (target) puede tomar dos valores:

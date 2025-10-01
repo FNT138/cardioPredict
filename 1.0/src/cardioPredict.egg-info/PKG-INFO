@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: cardioPredict
+Version: 0.1.0
+Summary: Utilidades para el proyecto (ej: data_utils).
+Author: Federico Trujillo
+Dynamic: author
+Dynamic: summary

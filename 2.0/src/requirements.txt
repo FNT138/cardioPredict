@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+ucimlrepo
+kagglehub[pandas-datasets]
+matplotlib
+seaborn
+shap
