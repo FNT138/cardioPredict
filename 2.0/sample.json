@@ -1,0 +1,63 @@
+[
+  {
+    "age": 45, "sex": 0, "cp": 0, "trestbps": 120, "chol": 180, "fbs": 0, "restecg": 0, "thalach": 170, "exang": 0, "oldpeak": 0.0, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 50, "sex": 1, "cp": 1, "trestbps": 125, "chol": 190, "fbs": 0, "restecg": 0, "thalach": 165, "exang": 0, "oldpeak": 0.5, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 48, "sex": 0, "cp": 0, "trestbps": 118, "chol": 175, "fbs": 0, "restecg": 0, "thalach": 172, "exang": 0, "oldpeak": 0.2, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 52, "sex": 1, "cp": 1, "trestbps": 122, "chol": 185, "fbs": 0, "restecg": 0, "thalach": 168, "exang": 0, "oldpeak": 0.3, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 46, "sex": 0, "cp": 0, "trestbps": 115, "chol": 178, "fbs": 0, "restecg": 0, "thalach": 171, "exang": 0, "oldpeak": 0.1, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 47, "sex": 1, "cp": 0, "trestbps": 119, "chol": 182, "fbs": 0, "restecg": 0, "thalach": 169, "exang": 0, "oldpeak": 0.2, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 51, "sex": 0, "cp": 1, "trestbps": 121, "chol": 186, "fbs": 0, "restecg": 0, "thalach": 167, "exang": 0, "oldpeak": 0.4, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 49, "sex": 1, "cp": 0, "trestbps": 117, "chol": 180, "fbs": 0, "restecg": 0, "thalach": 173, "exang": 0, "oldpeak": 0.0, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 50, "sex": 0, "cp": 1, "trestbps": 120, "chol": 185, "fbs": 0, "restecg": 0, "thalach": 169, "exang": 0, "oldpeak": 0.3, "slope": 2, "ca": 0, "thal": 3
+  },
+  {
+    "age": 48, "sex": 1, "cp": 0, "trestbps": 118, "chol": 179, "fbs": 0, "restecg": 0, "thalach": 171, "exang": 0, "oldpeak": 0.2, "slope": 2, "ca": 0, "thal": 3
+  },
+  
+  {
+    "age": 63, "sex": 1, "cp": 3, "trestbps": 170, "chol": 290, "fbs": 1, "restecg": 2, "thalach": 110, "exang": 1, "oldpeak": 3.5, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 66, "sex": 1, "cp": 3, "trestbps": 175, "chol": 300, "fbs": 1, "restecg": 2, "thalach": 105, "exang": 1, "oldpeak": 4.0, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 64, "sex": 0, "cp": 2, "trestbps": 168, "chol": 280, "fbs": 1, "restecg": 2, "thalach": 112, "exang": 1, "oldpeak": 3.0, "slope": 0, "ca": 1, "thal": 3
+  },
+  {
+    "age": 62, "sex": 1, "cp": 3, "trestbps": 172, "chol": 295, "fbs": 1, "restecg": 2, "thalach": 108, "exang": 1, "oldpeak": 3.8, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 65, "sex": 1, "cp": 3, "trestbps": 170, "chol": 310, "fbs": 1, "restecg": 2, "thalach": 107, "exang": 1, "oldpeak": 4.2, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 61, "sex": 0, "cp": 2, "trestbps": 169, "chol": 285, "fbs": 1, "restecg": 2, "thalach": 110, "exang": 1, "oldpeak": 3.2, "slope": 0, "ca": 1, "thal": 3
+  },
+  {
+    "age": 63, "sex": 1, "cp": 3, "trestbps": 171, "chol": 300, "fbs": 1, "restecg": 2, "thalach": 109, "exang": 1, "oldpeak": 3.6, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 64, "sex": 1, "cp": 3, "trestbps": 173, "chol": 305, "fbs": 1, "restecg": 2, "thalach": 106, "exang": 1, "oldpeak": 3.9, "slope": 0, "ca": 2, "thal": 3
+  },
+  {
+    "age": 62, "sex": 1, "cp": 2, "trestbps": 168, "chol": 290, "fbs": 1, "restecg": 2, "thalach": 111, "exang": 1, "oldpeak": 3.4, "slope": 0, "ca": 1, "thal": 3
+  },
+  {
+    "age": 65, "sex": 1, "cp": 3, "trestbps": 172, "chol": 300, "fbs": 1, "restecg": 2, "thalach": 108, "exang": 1, "oldpeak": 4.0, "slope": 0, "ca": 2, "thal": 3
+  }
+]

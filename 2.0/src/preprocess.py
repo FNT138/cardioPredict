@@ -1,4 +1,4 @@
-# preprocess.py
+# src/preprocess.py
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -6,31 +6,31 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 def build_preprocessing(df: pd.DataFrame):
-    # separar num y cat
+    # identificar columnas numéricas y categóricas
     num_cols = df.select_dtypes(include=['int64','float64']).columns.tolist()
-    cat_cols = df.select_dtypes(include=['object','category']).columns.tolist()
+    cat_cols = df.select_dtypes(include=['object','category','bool']).columns.tolist()
     if "target" in num_cols:
         num_cols.remove("target")
 
-    # algunas variables numéricas son categóricas (ej: sex, cp, fbs, thal en UCI)
-    maybe_cat = ["sex","cp","fbs","thal","slope","ca"]
+    # variables que a menudo son numéricas pero conceptualmente categóricas:
+    maybe_cat = ['sex','cp','fbs','thal','slope','ca','restecg','exang']
     for c in maybe_cat:
         if c in num_cols:
             num_cols.remove(c)
-            cat_cols.append(c)
+            if c not in cat_cols:
+                cat_cols.append(c)
 
-    num_pipe = Pipeline([
-        ("imputer", SimpleImputer(strategy="median")),
-        ("scaler", StandardScaler())
+    num_pipeline = Pipeline([
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
     ])
-    cat_pipe = Pipeline([
-        ("imputer", SimpleImputer(strategy="most_frequent")),
-        ("onehot", OneHotEncoder(handle_unknown="ignore"))
-    ])
-
-    pre = ColumnTransformer([
-        ("num", num_pipe, num_cols),
-        ("cat", cat_pipe, cat_cols)
+    cat_pipeline = Pipeline([
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
     ])
 
-    return pre, num_cols, cat_cols
+    preprocessor = ColumnTransformer([
+        ('num', num_pipeline, num_cols),
+        ('cat', cat_pipeline, cat_cols)
+    ], remainder='drop')
+    return preprocessor, num_cols, cat_cols
