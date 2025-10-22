@@ -1,32 +1,47 @@
 # src/train_models.py
-import os, json
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
-from sklearn.pipeline import Pipeline
-import joblib
+import json
+import os
 
-from dataset_load import load_uci_heart, load_kaggle_heart_failure, load_kaggle_framingham
+import joblib
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
+    roc_auc_score,
+)
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from xgboost import XGBClassifier
+
+from dataset_load import (
+    load_kaggle_framingham,
+    load_kaggle_heart_failure,
+    load_uci_heart,
+)
 from preprocess import build_preprocessing
 
 os.makedirs("models", exist_ok=True)
 os.makedirs("data/processed", exist_ok=True)
 os.makedirs("reports", exist_ok=True)
 
+
 def evaluate_model(model, X_test, y_test):
     preds = model.predict(X_test)
-    probs = model.predict_proba(X_test)[:,1]
+    probs = model.predict_proba(X_test)[:, 1]
     return {
         "accuracy": float(accuracy_score(y_test, preds)),
         "precision": float(precision_score(y_test, preds, zero_division=0)),
         "recall": float(recall_score(y_test, preds, zero_division=0)),
         "f1": float(f1_score(y_test, preds, zero_division=0)),
-        "auc": float(roc_auc_score(y_test, probs)) if len(set(y_test))>1 else None,
-        "confusion": confusion_matrix(y_test, preds).tolist()
+        "auc": float(roc_auc_score(y_test, probs)) if len(set(y_test)) > 1 else None,
+        "confusion": confusion_matrix(y_test, preds).tolist(),
     }
+
 
 def train_on_dataset(df, name="dataset"):
     # Normalizar nombre para archivos
@@ -44,8 +59,12 @@ def train_on_dataset(df, name="dataset"):
 
     models = {
         "logreg": LogisticRegression(max_iter=2000, class_weight="balanced"),
-        "rf": RandomForestClassifier(n_estimators=200, random_state=42, class_weight="balanced"),
-        "xgb": XGBClassifier(eval_metric="logloss", use_label_encoder=False, random_state=42)
+        "rf": RandomForestClassifier(
+            n_estimators=200, random_state=42, class_weight="balanced"
+        ),
+        "xgb": XGBClassifier(
+            eval_metric="logloss", use_label_encoder=False, random_state=42
+        ),
     }
 
     results = {}
@@ -68,11 +87,12 @@ def train_on_dataset(df, name="dataset"):
     print(f"[{name}] saved X_test, y_test and metrics.")
     return results
 
+
 if __name__ == "__main__":
     datasets = {
         "uci": load_uci_heart(),
         "heart_failure": load_kaggle_heart_failure(),
-        "framingham": load_kaggle_framingham()
+        "framingham": load_kaggle_framingham(),
     }
     master = {}
     for name, df in datasets.items():
@@ -82,6 +102,6 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Error training on {name}: {e}")
     # guardar resumen global
-    with open("reports/all_metrics.json","w") as f:
+    with open("reports/all_metrics.json", "w") as f:
         json.dump(master, f, indent=2)
     print("Training finished. All metrics in reports/")
