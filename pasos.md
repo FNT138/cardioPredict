@@ -1,4 +1,4 @@
-3) Ejecución paso a paso (comandos exactos)
+
 3.1 Ejecutar carga de datasets (opcional, para guardar copias)
 
 Desde la raíz del proyecto:
