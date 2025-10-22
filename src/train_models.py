@@ -1,9 +1,15 @@
-# src/train_models.py
+""" 
+Entrypoint para entrenar modelos en los datasets disponibles.
+Carga los datos, aplica preprocesamiento, entrena varios modelos y guarda los resultados.
+
+@Author Federico Trujillo
+@date 2025-10-22
+"""
+
 import json
 import os
 
 import joblib
-import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
@@ -23,16 +29,30 @@ from dataset_load import (
     load_kaggle_heart_failure,
     load_uci_heart,
 )
+
 from preprocess import build_preprocessing
 
+# crear directorios si no existen
 os.makedirs("models", exist_ok=True)
 os.makedirs("data/processed", exist_ok=True)
 os.makedirs("reports", exist_ok=True)
 
 
-def evaluate_model(model, X_test, y_test):
+def evaluate_model(model, X_test, y_test) -> dict:
+    """
+    Evalúa el modelo en el conjunto de prueba y devuelve métricas de la evaluacion.
+
+    Args:
+        model: modelo entrenado
+        X_test: características de prueba
+        y_test: etiquetas de prueba
+
+    Returns:
+        dict: métricas de evaluación
+    """
     preds = model.predict(X_test)
     probs = model.predict_proba(X_test)[:, 1]
+
     return {
         "accuracy": float(accuracy_score(y_test, preds)),
         "precision": float(precision_score(y_test, preds, zero_division=0)),
@@ -43,7 +63,15 @@ def evaluate_model(model, X_test, y_test):
     }
 
 
-def train_on_dataset(df, name="dataset"):
+def train_on_dataset(df, name="dataset") -> dict:
+    """
+    Entrena varios modelos en el dataset dado y guarda los resultados.
+    Args:
+        df: DataFrame con datos y columna 'target'
+        name: nombre del dataset (para guardar archivos)
+    Returns:
+        dict: métricas de evaluación por modelo
+    """
     # Normalizar nombre para archivos
     name = name.replace(" ", "_").lower()
     X = df.drop(columns=["target"])
@@ -54,7 +82,7 @@ def train_on_dataset(df, name="dataset"):
         X, y, test_size=0.3, stratify=y, random_state=42
     )
 
-    # build preprocessor based on full df (ensures same columns)
+    # construir preprocesador basado en el df completo (asegura mismas columnas)
     pre, num_cols, cat_cols = build_preprocessing(df)
 
     models = {
@@ -78,23 +106,28 @@ def train_on_dataset(df, name="dataset"):
         # Evaluate on test
         metrics = evaluate_model(pipe, X_test, y_test)
         results[mname] = metrics
+
     # save test split for reproducibility
+    # Guardamos X_test e y_test para futuras evaluaciones
     X_test.to_csv(f"data/processed/{name}_X_test.csv", index=False)
     y_test.to_csv(f"data/processed/{name}_y_test.csv", index=False)
     # save results json
     with open(f"reports/{name}_metrics.json", "w") as f:
         json.dump(results, f, indent=2)
     print(f"[{name}] saved X_test, y_test and metrics.")
+
     return results
 
 
 if __name__ == "__main__":
+    # cargar datasets
     datasets = {
         "uci": load_uci_heart(),
         "heart_failure": load_kaggle_heart_failure(),
         "framingham": load_kaggle_framingham(),
     }
     master = {}
+    # entrenar en cada dataset
     for name, df in datasets.items():
         try:
             res = train_on_dataset(df, name)
@@ -104,4 +137,4 @@ if __name__ == "__main__":
     # guardar resumen global
     with open("reports/all_metrics.json", "w") as f:
         json.dump(master, f, indent=2)
-    print("Training finished. All metrics in reports/")
+    print(" Entrenamiento finalizado. Todas las métricas en reports/")
