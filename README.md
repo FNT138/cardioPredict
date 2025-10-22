@@ -1,12 +1,12 @@
 # 🫀 cardioPredict
 
-## 📘 Descripción general
+## Descripción general
 
 El proyecto **cardioPredict** forma parte de la materia **Inteligencia Artificial** de la **Universidad Nacional de Río Negro (UNRN)**. Tiene como objetivo aplicar técnicas de **aprendizaje automático supervisado (supervised learning)** para desarrollar un modelo capaz de **predecir la presencia de enfermedad cardíaca** en pacientes, a partir de datos clínicos reales.
 
 ---
 
-## 🎯 Objetivo del proyecto
+## Objetivo del proyecto
 
 El propósito es construir un sistema de clasificación binaria que, a partir de variables médicas (edad, presión arterial, colesterol, frecuencia cardíaca, entre otras), determine si un paciente puede o no tener una enfermedad cardíaca.
 
@@ -18,7 +18,7 @@ El proyecto busca:
 
 ---
 
-## 🧰 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 * **Lenguaje:** Python 3.10+
 * **Librerías principales:**
@@ -32,7 +32,7 @@ El proyecto busca:
 
 ---
 
-## 🧩 Datasets utilizados
+## Datasets utilizados
 
 El proyecto combina tres fuentes de datos públicas:
 
@@ -44,30 +44,8 @@ Cada dataset se descarga automáticamente (vía `ucimlrepo` o `kagglehub`) o pue
 
 ---
 
-## 🧱 Estructura del repositorio
 
-```
-cardioPredict/
-├── src/
-│   ├── dataset_load.py       # Descarga y prepara datasets
-│   ├── train_models.py       # Entrena los modelos ML
-│   ├── predict_sample.py     # Realiza una predicción individual
-│   ├── interpret.py          # Interpretabilidad y visualizaciones
-│   └── run_shap.py           # Genera gráficos SHAP
-│
-├── data/
-│   ├── raw/                  # Datos originales
-│   ├── processed/            # Datos procesados y splits de test
-│
-├── models/                   # Modelos entrenados (.joblib)
-├── reports/                  # Métricas y resultados
-├── notebooks/                # Análisis y pruebas interactivas
-└── README.md                 # Este archivo
-```
-
----
-
-## ⚙️ Instalación y configuración
+##  Instalación y configuración
 
 1. Clonar el repositorio:
 
@@ -93,9 +71,9 @@ cardioPredict/
 
 ---
 
-## 🧠 Flujo completo de ejecución
+##  Flujo completo de ejecución
 
-### 🔹 1. Carga y preparación de datos
+###  1. Carga y preparación de datos
 
 ```bash
 python src/dataset_load.py
@@ -105,7 +83,7 @@ Guarda copias procesadas en `data/processed/*.csv` y muestra shapes en consola.
 
 ---
 
-### 🔹 2. Entrenamiento de modelos
+###  2. Entrenamiento de modelos
 
 ```bash
 python src/train_models.py
@@ -126,7 +104,7 @@ python src/train_models.py 2>&1 | tee run_train.log
 
 ---
 
-### 🔹 3. Visualización de resultados
+###  3. Visualización de resultados
 
 Para inspeccionar las métricas:
 
@@ -143,7 +121,7 @@ pd.read_json('reports/all_metrics.json')
 
 ---
 
-### 🔹 4. Predicción para un paciente ejemplo
+###  4. Predicción para un paciente ejemplo
 
 ```bash
 python src/predict_sample.py 0.5 models/uci_xgb.joblib models/uci_rf.joblib models/uci_logreg.joblib sample.json
@@ -157,7 +135,7 @@ python src/predict_sample.py 0.5 models/uci_xgb.joblib models/uci_rf.joblib mode
 
 ---
 
-### 🔹 5. Interpretabilidad (SHAP)
+###  5. Interpretabilidad (SHAP)
 
 Ejecutar:
 
@@ -169,7 +147,7 @@ Genera `reports/shap_summary.png` con la importancia de las variables.
 
 ---
 
-### 🔹 6. Ejecución en Jupyter / Colab
+###  6. Ejecución en Jupyter / Colab
 
 En Colab, crear un notebook `CardioPredict.ipynb` y en la primera celda instalar dependencias:
 
@@ -181,7 +159,7 @@ Luego importar y ejecutar los scripts desde `src/` o copiar las funciones princi
 
 ---
 
-## ⚠️ Problemas comunes y soluciones
+##  Problemas comunes y soluciones
 
 | Error                                        | Causa                    | Solución                                                           |
 | -------------------------------------------- | ------------------------ | ------------------------------------------------------------------ |
@@ -192,7 +170,7 @@ Luego importar y ejecutar los scripts desde `src/` o copiar las funciones princi
 
 ---
 
-## 🧩 Reproducibilidad y entrega
+##  Reproducibilidad y entrega
 
 Para entregar o replicar el trabajo:
 
