@@ -2,7 +2,7 @@
 venv/*
 video/*
 ppt/*
-2.0/reports/*
-2.0/models/*
-2.0/data/*
-2.0/src/__pycache__/*
+reports/*
+models/*
+data/*
+src/__pycache__/*
