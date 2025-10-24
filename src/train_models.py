@@ -91,7 +91,7 @@ def train_on_dataset(df, name="dataset") -> dict:
             n_estimators=200, random_state=42, class_weight="balanced"
         ),
         "xgb": XGBClassifier(
-            eval_metric="logloss", use_label_encoder=False, random_state=42
+            eval_metric="logloss",random_state=42
         ),
     }
 
